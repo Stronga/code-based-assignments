@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 5 Coding Exercise</title>
+
+    <style>
+        /* Style for the menu */
+        #menu {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #menu li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        #menu li a {
+            text-decoration: none;
+            color: #333;
+            padding: 5px 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+        }
+
+        #menu li a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <ul id="menu"></ul>
+    </div>
+ <script>
+let menuItems = [
+    { url: 'https://ohiojava.com', text: 'Home' },
+    { url: 'https://ohiojava.com/about', text: 'About Us' },
+    { url: 'https://ohiojava.com/products', text: 'Products' },
+    { url: 'https://ohiojava.com/services', text: 'Services' },
+    { url: 'https://ohiojava.com/contact', text: 'Contact Us' }
+];
+
+
+for (let item of menuItems) {
+    document.getElementById("menu").innerHTML +=`<li><a href="${item.url}">${item.text}</a></li>`
+    
+}
+</script>   
+    
+</body>
+</html>
