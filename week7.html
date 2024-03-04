@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 7</title>
+    <style>
+        .wrapall {
+            width: 60%;
+            background-color: #f1f6fd;
+            margin: 0 auto;
+            padding: 10px;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        form {
+            width: 40%;
+            margin: 0 auto;
+            float: left;
+            margin-right: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        .button {
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        #submitted-data {
+            width: 50%;
+            min-height: 500px;
+            float: right;
+            border-radius: 5px;
+            padding: 10px;
+            color: #fff;
+        }
+    </style>
+    
+    </head>
+    <body>
+        <div class="wrapall">
+            <form id="week7form" action="" method="get">
+                <label for="text-field">Text Field:</label>
+                <input type="text" id="text-field" name="text-field">
+    
+                <label for="number-field">Number Field:</label>
+                <input type="number" id="number-field" name="number-field">
+    
+                <input type="checkbox" id="checkbox" name="checkbox">
+                <label for="checkbox">Checkbox</label>
+    
+                <label>Radio Button Group:</label>
+                <input type="radio" id="radio1" name="radio-group" value="Option 1">
+                <label for="radio1">Option 1</label>
+                <input type="radio" id="radio2" name="radio-group" value="Option 2">
+                <label for="radio2">Option 2</label>
+    
+                <label for="dropdown-menu">Country</label>
+                <select id="dropdown-menu" name="dropdown-menu">
+                    <option value="Option 1">USA</option>
+                    <option value="Option 2">Canada</option>
+                    <option value="Option 3">Ghana</option>
+                </select>
+    
+                <label for="additional-field">Additional Field:</label>
+                <input type="text" id="additional-field" name="additional-field">
+    
+                <button type="submit" value="submit" id="submitButton">Submit</button>
+            </form>
+    
+            <div id="submitted-data"></div>
+        </div>
+    
+        <script>
+            document.getElementById("week7form").addEventListener("submit", function(event) {
+                event.preventDefault();
+    
+                
+                const formData = new FormData(this);
+                const textFieldValue = formData.get('text-field');
+                const numberFieldValue = formData.get('number-field');
+                const checkboxValue = formData.get('checkbox') ? 'checked' : 'unchecked';
+                const radioButtonValue = formData.get('radio-group');
+                const dropdownValue = formData.get('dropdown-menu');
+                const additionalFieldValue = formData.get('additional-field');
+    
+               
+                document.getElementById("submitted-data").innerHTML = "<h3>Form Results:</h3>" +
+                    "<p>Text Field: " + textFieldValue + "</p>" +
+                    "<p>Number Field: " + numberFieldValue + "</p>" +
+                    "<p>Checkbox: " + checkboxValue + "</p>" +
+                    "<p>Radio Button Group: " + radioButtonValue + "</p>" +
+                    "<p>Dropdown Menu: " + dropdownValue + "</p>" +
+                    "<p>Additional Field: " + additionalFieldValue + "</p>";
+    
+                
+                let bgColor = '';
+                switch (dropdownValue) {
+                    case 'Option 1':
+                        bgColor = 'red';
+                        break;
+                    case 'Option 2':
+                        bgColor = 'blue';
+                        break;
+                    case 'Option 3':
+                        bgColor = 'green';
+                        break;
+                    default:
+                        bgColor = 'rgb(104, 134, 139)';
+                }
+                document.getElementById("submitted-data").style.backgroundColor = bgColor;
+            });
+        </script>
+    </body>
+    </html>
+    
